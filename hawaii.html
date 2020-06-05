@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hawaii</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://www.wrh.noaa.gov/mfr/dot/satAwesome/satAwesome.css" rel="stylesheet">
+  </head>
+  <body>
+    <script>
+      /* Define variable named bandsAwesome, which must be an array of objects. 
+         Each object represents one satellite loop, and has these fields:
+         figId: id of the corresponding <figure> elm that will hold the loop
+         goesSat: which satellite. 
+         band: channel. Must be a string options "01" through "16", and "GEOCOLOR", "AirMass", "Sandwich", "DayCloudPhase", "NightMicrophysics"
+         sector: sector code, see documentation for options
+         size: resolution, see documentation for options
+         frames: how many images to have in loop
+         autoShrink: set to true to auto load image smaller than screen to improve performance.
+       */
+      var bandsAwesome = [{figId:"satAwesome1",goesSat:"GOES17",band:"02",sector:"hi",size:"1200x1200",frames:10,autoShrink:false},
+			  {figId:"satAwesome2",goesSat:"GOES17",band:"13",sector:"tpw",size:"1800x1080",frames:5,autoShrink:false}, 
+			  {figId:"satAwesome3",goesSat:"GOES17",band:"Sandwich",sector:"tpw",size:"1800x1080",frames:5,autoShrink:false}, 
+			  {figId:"satAwesome4",goesSat:"GOES17",band:"GEOCOLOR",sector:"tpw",size:"1800x1080",frames:5,autoShrink:false},
+			  {figId:"satAwesome5",goesSat:"GOES17",band:"AirMass",sector:"FD",size:"1808x1808",frames:5,autoShrink:false} 
+			 
+			  ];
+var radarSites = [{figId:"radAwesome1",radarId:"hawaii"}];
+    </script>
+    <figure id="satAwesome1"></figure>
+    <figure id="satAwesome2"></figure>
+    <figure id="satAwesome3"></figure>
+    <figure id="satAwesome4"></figure>
+    <figure id="radAwesome1"></figure>
+    <figure id="satAwesome5"></figure>
+  
+
+    <!-- now include the satAwesome js -->
+    <script src="https://www.wrh.noaa.gov/mfr/dot/satAwesome/satAwesome.js"></script>
+  </body>
+</html>
+
