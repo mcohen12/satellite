@@ -29,6 +29,9 @@ MyLoopObj.prototype.makeCaption = function(){
 MyLoopObj.prototype.makeImgPlace = function(destContainer,caption){
   var imgSpot = document.createElement("img");
   var destContainer = document.getElementById(destContainer);
+  //clear out container
+  while(destContainer.firstChild)
+   destContainer.removeChild(destContainer.firstChild);
   destContainer.appendChild(caption);
   destContainer.appendChild(imgSpot);
   return imgSpot;
