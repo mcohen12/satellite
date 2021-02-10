@@ -4,7 +4,7 @@
     <title>Satellite Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/satAwesome.css" rel="stylesheet">
+    <link href="satAwesome.css" rel="stylesheet">
   </head>
   <body>
     <script>
@@ -18,7 +18,7 @@
          frames: how many images to have in loop
          autoShrink: set to true to auto load image smaller than screen to improve performance.
        */
-      var bandsAwesome = [{figId:"satAwesome1",goesSat:"GOES17",band:"GEOCOLOR",sector:"ak",size:"1000x1000",frames:10,autoShrink:true},
+      var bandsAwesome = [{figId:"satAwesome1",goesSat:"GOES17",band:"GEOCOLOR",sector:"ak",size:"1000x1000",frames:10,autoShrink:true,imgDelay:200,loopEnd:300},
 			  {figId:"satAwesome2",goesSat:"GOES17",band:"13",sector:"ak",size:"500x500",frames:10,autoShrink:true}, 
 			  {figId:"satAwesome3",goesSat:"GOES17",band:"08",sector:"ak",size:"1000x1000",frames:10,autoShrink:true}, 
 			  {figId:"satAwesome4",goesSat:"GOES17",band:"GEOCOLOR",sector:"FD",size:"1808x1808",frames:10,autoShrink:true} 
@@ -32,7 +32,7 @@
   
 
     <!-- now include the satAwesome js -->
-    <script src="/satAwesome.js"></script>
+    <script src="satAwesome.js"></script>
   </body>
 </html>
 

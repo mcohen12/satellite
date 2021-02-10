@@ -1,7 +1,7 @@
 /* Script to easily create loops (to simulate gif user experience) of satellite images from NESDIS star page
  * To be used in conjunction with satAwesome.css
  * Radar functionality added (just throws in ridge gifs)
- * Updated: Feb 26 2019 to add GOES-17 
+ * Updated: Feb 10 2021 to add options for increasing loop speed
  * Author: Michelle McAuley and Shad Keene
 */
 
@@ -91,18 +91,18 @@ MyLoopObj.prototype.animateMe = function(){
   if (this.nextImg < 0){this.nextImg=this.length-1;}
   this.show_image(this.nextImg);
   if (this.nextImg == 0)
-    self.timeId = window.setTimeout(function(){self.animateMe()}, 1000);
+    self.timeId = window.setTimeout(function(){self.animateMe()}, self.loopEnd);
   else
-    self.timeId = window.setTimeout(function(){self.animateMe()}, 500);
+    self.timeId = window.setTimeout(function(){self.animateMe()}, self.imgDelay); 
 };
 
 /* MyLoopObj constructor */
-function MyLoopObj(destContainer, goesSat, channel, sector, res, numFrames, autoShrink){
+function MyLoopObj(destContainer, goesSat, channel, sector, res, numFrames, autoShrink,imgDelay=500,loopEnd=1000){
   this.images = new Array(); this.dates = new Array();
   document.getElementById(destContainer).className += "satDisplay";
   this.captionSpot = this.makeCaption();
   this.destination = this.makeImgPlace(destContainer,this.captionSpot);
-  this.delay = 500; 
+  this.imgDelay = parseInt(imgDelay); this.loopEnd = parseInt(loopEnd); 
   this.currImg = 0;this.nextImg = 1;
   this.length = numFrames; this.sector = sector.toUpperCase(); 
   if (this.sector == "CONUS" || this.sector == "FD"){
@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded',function(){
  if (typeof bandsAwesome !== 'undefined'){
   var bandsObjs = [];
   for(var i=0;i<bandsAwesome.length;i++){
-   var newObj = new MyLoopObj(bandsAwesome[i].figId, bandsAwesome[i].goesSat, bandsAwesome[i].band, bandsAwesome[i].sector, bandsAwesome[i].size, bandsAwesome[i].frames, bandsAwesome[i].autoShrink);
+   var newObj = new MyLoopObj(bandsAwesome[i].figId, bandsAwesome[i].goesSat, bandsAwesome[i].band, bandsAwesome[i].sector, bandsAwesome[i].size, bandsAwesome[i].frames, bandsAwesome[i].autoShrink, bandsAwesome[i].imgDelay, bandsAwesome[i].loopEnd);
    bandsObjs.push(newObj);
   }
 
